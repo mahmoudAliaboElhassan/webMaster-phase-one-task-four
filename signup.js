@@ -1,13 +1,16 @@
-// Retrieve registered emails from localStorage
 const registeredEmails =
   JSON.parse(localStorage.getItem("registeredEmails")) || [];
+
+const host = window.location.hostname;
+console.log("host", host);
+const isDeployment = host.includes("github.io");
 
 document.getElementById("myEmail").onblur = function () {
   const email = this.value.trim();
 
   if (registeredEmails.includes(email)) {
     alert("This email is already registered. Please use another one.");
-    this.value = ""; // Clear the input field
+    this.value = "";
   }
 };
 
@@ -38,5 +41,7 @@ document.getElementById("registerBtn").onclick = function () {
   localStorage.setItem("registeredEmails", JSON.stringify(registeredEmails));
 
   alert("Registration successful!");
-  window.location.href = "login.html"; // Redirect to login page
+  window.location.href = isDeployment
+    ? "/webMaster-phase-one-task-four/login.html"
+    : "/login.html";
 };
