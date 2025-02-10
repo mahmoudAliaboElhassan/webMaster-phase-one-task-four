@@ -38,5 +38,5 @@ document.getElementById("registerBtn").onclick = function () {
   localStorage.setItem("registeredEmails", JSON.stringify(registeredEmails));
 
   alert("Registration successful!");
-  window.location.href = "/login.html"; // Redirect to login page
+  window.location.href = "login.html"; // Redirect to login page
 };
